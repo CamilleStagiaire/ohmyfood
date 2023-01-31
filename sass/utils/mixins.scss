@@ -1,0 +1,52 @@
+// les titres
+@mixin titres {
+    font-size: 24px;
+    font-weight: 900;
+}
+
+// images des cards
+@mixin photo {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+    border-radius: $bordeur-radius $bordeur-radius 0 0;
+}
+
+// les cards
+@mixin card($bg-color: white) {
+    background-color: $bg-color;
+    border-radius: $bordeur-radius;
+    @include shadow;
+}
+
+// ombre des éléments
+@mixin shadow {
+    box-shadow: 0 5px 5px rgba(0, 1, 5, 0.1);
+}
+
+//boutons dégradés
+@mixin btn {
+    @include shadow;
+    font-size: $size;
+    padding: 15px 20px;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-radius: 30px;
+    color: white;
+    background: linear-gradient(to top, #{$color-primary}, #{$color-secondary});
+    border: none;
+}
+
+//bouttons hover 
+@mixin btnHover {
+    opacity: 0.8;
+    box-shadow: 0 5px 5px rgba(0, 1, 5, 0.35);
+}
+
+// responsivité
+@mixin medium-up {
+    width: 70%;
+    margin: auto;
+}

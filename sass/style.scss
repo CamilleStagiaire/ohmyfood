@@ -1,0 +1,602 @@
+@import "utils/reset.scss";
+@import "utils/mixins.scss";
+@import "utils/variables.scss";
+
+body {
+    margin: auto;
+    font-size: $size;
+    font-family: $font-text;
+    @media #{$medium-up} {
+        max-width: $max-width;
+    }
+}
+
+/* amination loading spinner */
+.loader-position {
+    opacity: 1;
+    animation: fadeout 2s backwards;
+}
+@keyframes fadeout {
+    1% {
+        opacity: 0.2;
+    }
+
+    100% {
+        opacity: 0.2;
+    }
+}
+
+.loader {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: 5px solid;
+    border-color: $color-primary $color-primary transparent;
+    animation: rotation 2s linear;
+    animation-fill-mode: forwards;
+  }
+
+  .loader::after, .loader::before {
+    content: '';  
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    border: 5px solid;
+    border-color: transparent $color-tertiary $color-tertiary;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    animation: spin 2s linear;
+    animation-fill-mode: forwards;
+  }
+
+  .loader::before {
+    width: 50px;
+    height: 50px;
+    border-color: $color-secondary  $color-secondary transparent;
+    animation: rotation 2s linear;
+  }
+
+  @keyframes rotation {
+    0% {
+      transform: rotate(0deg);
+    }
+    99% {
+        opacity: 1;
+    }
+    100% {
+      transform: rotate(-360deg);
+      opacity: 0;
+    }
+  } 
+         
+@keyframes spin {
+    0% {
+        transform:  rotate(-360deg);
+      }
+    99% {
+        transform: rotate(360deg);
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+/* HEADER */
+.header {
+    &__logo {
+        @include shadow;
+        text-align: center;
+        display: inline-block;
+        width: 100%;
+        padding: 20px 0 10px 0;
+
+        &__img {
+            width: 10em;
+            position: relative;
+        }
+
+        // logo des pages menus
+        &--menus {
+            .fa-arrow-left {
+                position: relative;
+                float: left;
+                margin-top: -40px;
+                margin-left: 20px;
+            }
+
+            .header-menu {
+                text-align: center;
+                margin: 20px;
+            }
+
+            a {
+                color: $color-text;
+            }
+        }
+    }
+
+    // image d'entête des pages menus 
+    &__image {
+        height: 275px;
+        width: 100%;
+
+        &__photo {
+            @include photo;
+            border-radius: 0;
+        }
+    }
+
+    // formulaire de recherche page d'accueil 
+    &__search {
+        background-color: $color-form;
+
+        &__form {
+            background-color: $color-form;
+            border: hidden;
+            font-size: $size;
+            font-weight: bold;
+            color: $color-text;
+        }
+    }
+
+    &__form {
+        display: flex;
+        justify-content: center;
+        padding: 8px;
+        color: $color-text;
+
+        .fa-location-dot {
+            margin: 10px;
+        }
+    }
+}
+
+/* MAIN */
+.accueil {
+     // titre de la page d'accueil 
+    &__titre {
+        @include titres;
+        text-align: center;
+        margin: 20px 40px;
+
+        // titres des pages menus
+        &--menus {
+            padding: $padding-section;
+            padding-bottom: 10px;
+            font-family: $font-title;
+            font-size: 28px;
+            &::first-letter {
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    // titres des sections page d'accueil
+    &__titre2 {
+        @include titres;
+        margin: 30px 0;
+
+        @media #{$medium-up} {
+            text-align: center;
+        }
+    }
+
+    // section accueil pages menus (div de titre)
+    &--menus {
+        border-radius: 40px 40px 0 0;
+        position: relative;
+        margin-top: -50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 35px 0 0;
+        background-color: $color-background;
+
+        @media #{$medium-up} {
+            justify-content: space-around;
+        }
+    }
+
+    // section d'entête page d'accueil
+    &__explore {
+        background-color: $color-background;
+        padding: $padding-section;
+
+        &__text {
+            color: $color-text;
+            text-align: center;
+            font-size: $size-medium;
+        }
+
+        // bouton explorer page d'accueil
+        &__btn {
+            width: 220px;
+            @include btn;
+
+            &:hover {
+                @include btnHover;
+            }
+        }
+    }
+
+    // section fonctionnement page d'accueil
+    &__fonctionnement {
+        padding: $padding-section;
+        padding-bottom: 50px;
+
+        @media #{$medium-up} {
+            @include medium-up;
+        }
+        @media #{$large-up} {
+            width: 100%;
+        }
+
+        .list {
+            margin: 30px 0 20px 0;
+            color: $color-text;
+            padding-left: 15px;
+
+            @media #{$large-up} {
+                display: flex;
+                justify-content: space-around;
+            }
+
+            &__item {
+                @include card($color-background);
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                padding: $padding-section;
+                font-weight: bold;
+                margin: 20px 20px;
+
+                &__number {
+                    position: relative;
+                    margin-left: -2.5em;
+                    font-weight: normal;
+                    background-color: $color-primary;
+                    color: white;
+                    padding: 5px 9px;
+                    border: 1px #D9D9D9 solid;
+                    border-radius: 50px;
+                    font-size: 14px;
+                }
+
+                &:hover {
+                    background-color: rgba($color: $color-primary, $alpha: 0.15);
+
+                    i {
+                        color: $color-primary;
+                    }
+                }
+            }
+
+            &__items {
+                padding-left: $padding-section;
+            }
+        }
+    }
+
+    // section restaurants
+    &__restaurants {
+        padding: $padding-section;
+        padding-bottom: 50px;
+        background-color: $color-background;
+
+        // responsivité des cartes page d'accueil
+        &__cards {
+            @media #{$medium-up} {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 1em;
+
+                .card {
+                    width: 45%;
+                }
+            }
+
+            @media #{$large-up} {
+                width: 80%;
+                margin: auto;
+                gap: 2em;
+            }
+        }
+    }
+
+    // section carte des pages menus
+    &--carte {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        padding: 12px;
+        background-color: $color-background;
+        @media #{$large-up} {
+            gap: 10px;
+          flex-direction: row;
+          justify-content: center;
+        }
+    }
+
+    // les blocs des pages menus
+    .carte {
+
+        @media #{$large-up} {
+            width: 32%;
+            }
+
+        &__titre  {
+            text-transform: uppercase;
+            padding-bottom: 5px;
+            border-bottom: 3px solid $color-tertiary;
+            width: 40px;
+            margin-bottom: 10px;
+            @media #{$medium-up} {
+               margin: auto;
+               margin-bottom: 10px;
+                }
+        }
+
+        &__cards {
+            gap: 15px;
+            display: flex;
+            flex-direction: column;
+            animation: anim $animation;
+
+            @media #{$medium-up} {
+                @include medium-up;
+            }
+            @media #{$large-up} {
+               width: 100%;
+            } 
+        }
+    }
+}
+
+/* animation des plats de la carte */
+.anim {
+    animation: fadein $anim-dur backwards;
+    animation-direction: reverse;
+
+    @for $i from 1 through $cards {
+        &--#{$i} {
+            animation-delay: $anim-delay * $i;
+        }
+    }
+}
+
+@keyframes anim {
+    from {
+        gap: 40px;
+    }
+    to {
+        gap: 15px;
+    }
+}
+
+@keyframes fadein {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+/* les cards des restaurants page d'accueil */
+.card {
+    @include card;
+    margin-bottom: 20px;
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+
+    // boutton Nouveau
+    .btn {
+        position: relative;
+        float: right;
+        margin-top: -165px;
+        margin-right: 12px;
+        background-color: $color-tertiary;
+        padding: 7px 12px;
+        border: none;
+        font-weight: bold;
+        color: #239176;
+    }
+
+    &__img {
+        height: 175px;
+        width: 100%;
+
+        &__photo {
+            @include photo;
+        }
+    }
+
+    &__text {
+        padding: 15px;
+        padding-right: 25px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+
+        &__titre {
+            font-weight: bold;
+            font-size: $size-medium;
+            &::first-letter {
+                text-transform: uppercase;
+            }
+        }
+    }
+
+    // les cards des pages menus 
+    &--menus {
+        @include card;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        height: 65px;
+        overflow: hidden;
+
+        &__titre {
+            font-weight: bold;
+            font-size: $size-medium;
+        }
+
+        &__p {
+            font-size: 15px;
+            &::first-letter {
+                text-transform: uppercase;
+            }
+        }
+
+        &__flex {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .element1 {
+            padding: 10px 5px 0px 10px;
+            line-height: 25px;
+            width: 86%;
+
+            p, h3 {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+
+        .element2 {
+            padding: 35px 20px 0 0;
+            h3 {
+              font-weight: 500;
+            }  
+        }
+
+        .element3 {
+            padding: 0;
+            transition: all 500ms;
+            width: 0px;
+            background-color: $color-tertiary;
+
+            i {
+                transition: transform 500ms;
+                padding: 33px 20px;
+                color: white;
+            }
+        }
+    }
+}
+
+/* animation du tarif checked */
+.card--menus:hover {
+    .element1 {
+        overflow: hidden;
+    }
+
+    .element3 {
+        width: 60px;
+        i {
+            transform: rotate(1turn);
+        }
+    }
+}
+
+/* bouton commander pages menus */
+.order {
+    background-color: $color-background;
+    padding: 30px 0 10px 0;
+    &__btn {
+        width: 185px;
+        @include btn;
+        margin-top: 0;
+
+        &:hover {
+            @include btnHover;
+        }
+    }
+}
+
+/* animation du coeur */
+.coeur {
+    margin: 0;
+    padding: 0;
+    font-size: 18px;
+    -webkit-text-stroke: 1px;
+    -webkit-text-stroke-color: black;
+    color: rgba(255, 255, 255, 0);
+    background:
+        -webkit-linear-gradient(top,
+            rgba(255, 121, 218, 0) 0%,
+            rgba(255, 121, 218, 0) 15%,
+            rgba(255, 160, 17, 0) 27%,
+            rgba(147, 86, 220, 0.9) 37%,
+            rgba(147, 86, 220, 0.9) 46%,
+            rgba(198, 95, 198, 0.65) 58%,
+            rgba(255, 121, 218, 0.67) 69%,
+            rgba(255, 121, 218, 0.69) 79%,
+            rgba(255, 121, 218, 0.7) 89%,
+            rgba(255, 121, 218, 0.72) 100%);
+    background-size: 100% 300%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    transition: background-position 0.5s linear;
+    cursor: pointer;
+
+    &:hover {
+        background-position: center right, top right;
+        -webkit-text-stroke-color: white;
+    }
+}
+
+/* FOOTER */
+.footer {
+    background: $color-footer;
+    color: white;
+    padding: $padding-section 0 40px 25px;
+
+    &__titre {
+        font-family: $font-title ;
+        font-size: $size-medium;
+        padding-bottom: 15px;
+        @media #{$medium-up} {
+            text-align: center;
+        }
+    }
+
+    &__list {
+        line-height: 25px;
+        @media #{$medium-up} {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .fa-utensils {
+            padding-right: 20px;
+        }
+
+        .fa-handshake-angle {
+            padding-right: 15px;
+        }
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+}

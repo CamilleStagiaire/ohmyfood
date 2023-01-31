@@ -1,0 +1,47 @@
+// les polices
+$font-text: 'Roboto', sans-serif;
+$font-title: 'Shrikhand', cursive;
+
+// les couleurs
+$color-primary: #9356DC;
+$color-secondary: #FF79DA;
+$color-tertiary: #99E2D0;
+
+$color-background: #f7f7f7;
+$color-form: #eaeaea;
+$color-footer:#353535;
+$color-text: #494949;
+
+// tailles de police
+$size: 16px;
+$size-medium: 18px;
+
+// padding
+$padding-section: 20px;
+
+// border-radius
+$bordeur-radius:20px;
+
+//box-shadow
+$shadow: 0 5px 5px rgba(0, 1, 5, 0.1);
+
+/* -------------------------
+ANIMATIONS
+----------------------------*/
+$cards: 3;
+$anim-dur: 500ms;
+$animation: $anim-dur * $cards;
+$anim-delay: calc($anim-dur / $cards);
+
+/* -------------------------
+MEDIA QUERIES 
+----------------------------*/
+// Largeur max
+$max-width: 1400px;
+
+// breakpoints
+$medium: 640px;
+$large: 992px;
+
+$medium-up: "only screen and (min-width: #{$medium})";
+$large-up: "only screen and (min-width: #{$large})";
