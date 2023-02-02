@@ -16,17 +16,17 @@
 @mixin card($bg-color: white) {
     background-color: $bg-color;
     border-radius: $bordeur-radius;
-    @include shadow;
+    box-shadow: $shadow;
 }
 
 // ombre des éléments
-@mixin shadow {
-    box-shadow: 0 5px 5px rgba(0, 1, 5, 0.1);
-}
+// @mixin shadow {
+//     box-shadow: 0 5px 5px rgba(0, 1, 5, 0.1);
+// }
 
 //boutons dégradés
 @mixin btn {
-    @include shadow;
+    box-shadow: $shadow;
     font-size: $size;
     padding: 15px 20px;
     display: block;
@@ -41,8 +41,8 @@
 
 //bouttons hover 
 @mixin btnHover {
-    opacity: 0.8;
-    box-shadow: 0 5px 5px rgba(0, 1, 5, 0.35);
+    opacity: 0.7;
+    box-shadow: $shadowHover;
 }
 
 // responsivité
