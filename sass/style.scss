@@ -13,7 +13,6 @@ body {
 
 /* amination loading spinner */
 .loader-position {
-    opacity: 1;
     animation: fadeout 2s backwards;
 }
 @keyframes fadeout {
@@ -178,9 +177,6 @@ body {
             padding-bottom: 10px;
             font-family: $font-title;
             font-size: 28px;
-            &::first-letter {
-                text-transform: uppercase;
-            }
         }
     }
 
@@ -262,6 +258,7 @@ body {
                 padding: $padding-section;
                 font-weight: bold;
                 margin: 20px 20px;
+                cursor: pointer;
 
                 &__number {
                     position: relative;
@@ -438,9 +435,6 @@ body {
         &__titre {
             font-weight: bold;
             font-size: $size-medium;
-            &::first-letter {
-                text-transform: uppercase;
-            }
         }
     }
 
@@ -460,9 +454,6 @@ body {
 
         &__p {
             font-size: 15px;
-            &::first-letter {
-                text-transform: uppercase;
-            }
         }
 
         &__flex {
@@ -471,7 +462,7 @@ body {
         }
 
         .element1 {
-            padding: 10px 5px 0px 10px;
+            padding: 10px 5px 0px 15px;
             line-height: 25px;
             width: 86%;
 
@@ -506,6 +497,7 @@ body {
 
 /* animation du tarif checked */
 .card--menus:hover {
+    cursor: pointer;
     .element1 {
         overflow: hidden;
     }

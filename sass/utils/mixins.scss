@@ -19,11 +19,6 @@
     box-shadow: $shadow;
 }
 
-// ombre des éléments
-// @mixin shadow {
-//     box-shadow: 0 5px 5px rgba(0, 1, 5, 0.1);
-// }
-
 //boutons dégradés
 @mixin btn {
     box-shadow: $shadow;
@@ -37,6 +32,7 @@
     color: white;
     background: linear-gradient(to top, #{$color-primary}, #{$color-secondary});
     border: none;
+    cursor: pointer;
 }
 
 //bouttons hover 
