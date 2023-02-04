@@ -33,6 +33,7 @@
     background: linear-gradient(to top, #{$color-primary}, #{$color-secondary});
     border: none;
     cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 
 //bouttons hover 
