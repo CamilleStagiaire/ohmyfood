@@ -13,7 +13,7 @@ body {
 
 /* amination loading spinner */
 .loader-position {
-    animation: fadeout 2s backwards;
+    animation: fadeout 2s;
 }
 @keyframes fadeout {
     0% {
@@ -337,15 +337,20 @@ body {
 
         &__titre  {
             text-transform: uppercase;
-            padding-bottom: 5px;
-            border-bottom: 3px solid $color-tertiary;
-            width: 40px;
-            margin-bottom: 10px;
-            @media #{$medium-up} {
-               margin: auto;
-               margin-bottom: 10px;
+            padding-bottom: 20px;
+            position: relative;
+            margin-bottom: 0;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    height: 3px;
+                    width: 40px;
+                    background-color: $color-tertiary;
+                    margin-top: 25px;
                 }
         }
+      
 
         &__cards {
             gap: 15px;
