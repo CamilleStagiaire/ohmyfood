@@ -349,9 +349,11 @@ body {
                     background-color: $color-tertiary;
                     margin-top: 25px;
                 }
+                @media #{$medium-up} {
+                   text-align: center;
+                    }
         }
       
-
         &__cards {
             gap: 15px;
             display: flex;
